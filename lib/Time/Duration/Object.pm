@@ -10,13 +10,13 @@ Time::Duration::Object - Time::Duration, but an object
 
 =head1 VERSION
 
-version 0.14
+version 0.16
 
  $Id: Object.pm,v 1.5 2004/11/01 12:25:54 rjbs Exp $
 
 =cut
 
-our $VERSION = '0.14';
+our $VERSION = '0.16';
 
 =head1 SYNOPSIS
 
@@ -90,7 +90,7 @@ These methods all perform the function of the same name from Time::Duration.
 	for (@methods) {
 		my $method = \&{"Time::Duration::$_"};
 		*{$_} = sub {
-			push @_, ${(shift)};
+			unshift @_, ${(shift)};
 			my $result = &$method(@_);
 			bless \$result => 'Time::Duration::_Result';
 		}
@@ -138,7 +138,7 @@ notified of progress on your bug as I make changes.
 
 =head1 COPYRIGHT
 
-Copyright 2004 Ricardo Signes, All Rights Reserved.
+Copyright 2004-2006 Ricardo Signes, All Rights Reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

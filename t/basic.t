@@ -28,3 +28,9 @@ BEGIN { use_ok('Time::Duration::Object'); }
 	can_ok($ago, 'concise');
 	is($ago->concise, '2h13m ago');
 }
+
+{
+  my $duration = Time::Duration::Object->new(87000);
+  is($duration->ago, '1 day and 10 minutes ago');
+  is($duration->ago(1), '1 day ago');
+}
