@@ -6,3 +6,4 @@ lib/Time/Duration/Object.pm
 t/00.load.t
 t/pod-coverage.t
 t/pod.t
+t/perl-critic.t
