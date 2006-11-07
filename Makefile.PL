@@ -7,6 +7,7 @@ WriteMakefile(
     AUTHOR              => 'Ricardo Signes <rjbs@cpan.org>',
     VERSION_FROM        => 'lib/Time/Duration/Object.pm',
     ABSTRACT_FROM       => 'lib/Time/Duration/Object.pm',
+    LICENSE             => 'perl',
     PL_FILES            => {},
     PREREQ_PM => {
         'Test::More'     => 0,
