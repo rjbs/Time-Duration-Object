@@ -1,5 +1,8 @@
 Revision history for Time-Duration-Object
 
+0.161   2006-11-06
+        kwalitee improvements
+
 0.16    2006-02-18
         fix broken parameter-passing to T::D routines
 

@@ -10,13 +10,13 @@ Time::Duration::Object - Time::Duration, but an object
 
 =head1 VERSION
 
-version 0.16
+version 0.161
 
- $Id: Object.pm,v 1.5 2004/11/01 12:25:54 rjbs Exp $
+ $Id$
 
 =cut
 
-our $VERSION = '0.16';
+our $VERSION = '0.161';
 
 =head1 SYNOPSIS
 
@@ -81,6 +81,7 @@ These methods all perform the function of the same name from Time::Duration.
 =cut
 
 {
+  ## no critic (ProhibitNoStrict)
 	no strict 'refs';
 	no warnings 'redefine';
 	my @methods = qw(
