@@ -81,21 +81,21 @@ These methods all perform the function of the same name from Time::Duration.
 =cut
 
 {
-  ## no critic (ProhibitNoStrict)
-	no strict 'refs';
-	no warnings 'redefine';
-	my @methods = qw(
-		duration duration_exact ago ago_exact from_now from_now_exact later
-		later_exact earlier earlier_exact
-	);
-	for (@methods) {
-		my $method = \&{"Time::Duration::$_"};
-		*{$_} = sub {
-			unshift @_, ${(shift)};
-			my $result = &$method(@_);
-			bless \$result => 'Time::Duration::_Result';
-		}
-	}
+  ## no critic (ProhibitNoStrict ProhibitNoWarnings)
+  no strict 'refs';
+  no warnings 'redefine';
+  my @methods = qw(
+    duration duration_exact ago ago_exact from_now from_now_exact later
+    later_exact earlier earlier_exact
+  );
+  for (@methods) {
+    my $method = \&{"Time::Duration::$_"};
+    *{$_} = sub {
+      unshift @_, ${(shift)};
+      my $result = &$method(@_);
+      bless \$result => 'Time::Duration::_Result';
+    }
+  }
 }
 
 package Time::Duration::_Result;
