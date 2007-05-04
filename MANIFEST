@@ -3,7 +3,10 @@ MANIFEST
 Makefile.PL
 README
 lib/Time/Duration/Object.pm
+lib/Time/Duration/Object/Infinite.pm
 t/00-load.t
+t/basic.t
+t/infinite.t
 t/pod-coverage.t
 t/pod.t
 t/perl-critic.t

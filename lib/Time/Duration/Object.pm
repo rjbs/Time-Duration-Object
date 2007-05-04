@@ -10,13 +10,13 @@ Time::Duration::Object - Time::Duration, but an object
 
 =head1 VERSION
 
-version 0.161
+version 0.200
 
  $Id$
 
 =cut
 
-our $VERSION = '0.161';
+our $VERSION = '0.200';
 
 =head1 SYNOPSIS
 
@@ -84,10 +84,7 @@ These methods all perform the function of the same name from Time::Duration.
   ## no critic (ProhibitNoStrict ProhibitNoWarnings)
   no strict 'refs';
   no warnings 'redefine';
-  my @methods = qw(
-    duration duration_exact ago ago_exact from_now from_now_exact later
-    later_exact earlier earlier_exact
-  );
+  my @methods = map { $_, "$_\_exact" } qw(duration ago from_now later earlier);
   for (@methods) {
     my $method = \&{"Time::Duration::$_"};
     *{$_} = sub {
