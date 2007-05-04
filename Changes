@@ -1,5 +1,8 @@
 Revision history for Time-Duration-Object
 
+0.200   2007-04-04
+        add Time::Duration::Object::Infinite
+
 0.161   2006-11-10
         kwalitee improvements
 
