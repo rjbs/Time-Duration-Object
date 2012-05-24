@@ -5,7 +5,7 @@ use strict;
 
 sub isa {
   return 1 if $_[1] eq 'Time::Duration::Object';
-  return UNIVERSAL::isa(@_); # Whatever. -- rjbs, 2007-05-04
+  return $_[0]->UNIVERSAL::isa($_[1]);
 }
 
 =head1 NAME
@@ -14,13 +14,11 @@ Time::Duration::Object::Infinite - Time::Duration::Object, but infinite
 
 =head1 VERSION
 
-version 0.200
-
- $Id$
+version 0.300
 
 =cut
 
-our $VERSION = '0.200';
+our $VERSION = '0.300';
 
 =head1 SYNOPSIS
 
@@ -173,8 +171,10 @@ sub concise {
 	${ $_[0] }
 }
 
+sub as_string { ${ $_[0] } }
+
 use overload
-	'""' => sub { ${$_[0]} },
+	'""' => 'as_string',
 	fallback => 1;
 
 =head1 AUTHOR

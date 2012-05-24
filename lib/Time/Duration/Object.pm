@@ -10,13 +10,11 @@ Time::Duration::Object - Time::Duration, but an object
 
 =head1 VERSION
 
-version 0.200
-
- $Id$
+version 0.300
 
 =cut
 
-our $VERSION = '0.200';
+our $VERSION = '0.300';
 
 =head1 SYNOPSIS
 
@@ -97,7 +95,20 @@ These methods all perform the function of the same name from Time::Duration.
 
 package Time::Duration::_Result;
 
-=head2 C< concise>
+=head2 as_string
+
+Time::Duration::Object methods don't return strings, they return an object that
+stringifies.  If you can't deal with that and don't want to stringify by
+concatenating an empty string, you can call C<as_string> instead.
+
+ my $duration = Time::Duration::Object->new(8000);
+ print $duration->ago->as_string; # 2 hours and 13 minutes ago
+
+=cut
+
+sub as_string { ${ $_[0] } }
+
+=head2 concise
 
 This method can be called on the result of the above methods, trimming down the
 ouput.  For example:
@@ -114,7 +125,7 @@ sub concise {
 }
 
 use overload
-	'""' => sub { ${$_[0]} },
+	'""' => 'as_string',
 	fallback => 1;
 
 =head1 SEE ALSO

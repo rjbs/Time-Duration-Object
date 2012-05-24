@@ -1,4 +1,4 @@
-use Test::More tests => 14;
+use Test::More tests => 15;
 use strict;
 use warnings;
 
@@ -14,8 +14,12 @@ BEGIN { use_ok('Time::Duration::Object'); }
 	isa_ok($duration, 'Time::Duration::Object');
 
 	cmp_ok($duration->seconds, '==', 8000);
-	
 	is($duration->ago_exact, '2 hours, 13 minutes, and 20 seconds ago');
+
+	is(
+	  $duration->ago_exact->as_string,
+	  '2 hours, 13 minutes, and 20 seconds ago',
+	);
 
 	is($duration->ago, '2 hours and 13 minutes ago');
 	isa_ok($duration->ago, 'Time::Duration::_Result');

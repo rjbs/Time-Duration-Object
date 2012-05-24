@@ -1,5 +1,8 @@
 Revision history for Time-Duration-Object
 
+0.300   2012-05-24
+        add the as_string method
+
 0.200   2007-04-04
         add Time::Duration::Object::Infinite
 

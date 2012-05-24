@@ -1,4 +1,4 @@
-use Test::More tests => 13;
+use Test::More tests => 14;
 use strict;
 use warnings;
 
@@ -22,6 +22,7 @@ BEGIN { use_ok('Time::Duration::Object::Infinite'); }
 {
   my $duration = Time::Duration::Object::Infinite->new_negative;
   is($duration->ago, 'forever from now');
+  is($duration->ago->as_string, 'forever from now');
   is($duration->ago(1), 'forever from now');
   is($duration->later, 'infinitely earlier');
   is($duration->earlier, 'infinitely later');
