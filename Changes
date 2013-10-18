@@ -1,5 +1,10 @@
 Revision history for Time-Duration-Object
 
+{{$NEXT}}
+
+0.301     2013-10-18 12:04:48 America/New_York
+          add a repo and bugtracker link to metadata
+
 0.300   2012-05-24
         add the as_string method
 
