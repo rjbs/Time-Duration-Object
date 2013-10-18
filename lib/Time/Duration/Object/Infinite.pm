@@ -1,24 +1,12 @@
-package Time::Duration::Object::Infinite;
-
-use warnings;
 use strict;
+use warnings;
+package Time::Duration::Object::Infinite;
+# ABSTRACT: Time::Duration::Object, but infinite
 
 sub isa {
   return 1 if $_[1] eq 'Time::Duration::Object';
   return $_[0]->UNIVERSAL::isa($_[1]);
 }
-
-=head1 NAME
-
-Time::Duration::Object::Infinite - Time::Duration::Object, but infinite
-
-=head1 VERSION
-
-version 0.300
-
-=cut
-
-our $VERSION = '0.300';
 
 =head1 SYNOPSIS
 
@@ -34,11 +22,9 @@ our $VERSION = '0.300';
 This is a class for Time::Duration::Object-like objects representing infinite
 durations.
 
-=head1 METHODS
+=method new
 
-=head2 C< new >
-
-=head2 C< new_positive >
+=method new_positive
 
 These methods return a new Time::Duration::Object::Infinite for a positive
 duration.
@@ -53,7 +39,7 @@ sub new_positive {
 
 sub new { shift->new_positive }
 
-=head2 C< new_negative >
+=method new_negative
 
 This returns a new Time::Duration::Object::Infinite for a negative duration.
 
@@ -67,7 +53,7 @@ sub new_negative {
 
 sub _is_pos { ${$_[0]} == -1 }
 
-=head2 C< seconds >
+=method new_seconds
 
 This method returns either C<+inf> or C<-inf> using Math::BigInt.  (I don't
 recommend calling it.)
@@ -79,9 +65,9 @@ sub seconds {
   return Math::BigInt->binf(shift->_is_pos ? '-' : ());
 }
 
-=head2 duration
+=method duration
 
-=head2 duration_exact
+=method duration_exact
 
 These methods both return "forever."
 
@@ -105,9 +91,9 @@ BEGIN {
   $earlier_later = [ 'infinitely earlier', 'infinitely later' ];
 }
 
-=head2 ago
+=method ago
 
-=head2 ago_exact
+=method ago_exact
 
 These methods return "forever ago" for positive durations and "forever from
 now" for negative durations.
@@ -117,9 +103,9 @@ now" for negative durations.
 sub ago       { $_[0]->_flop(1, $ago_from_now); }
 sub ago_exact { $_[0]->_flop(1, $ago_from_now); }
 
-=head2 from_now
+=method from_now
 
-=head2 from_now_exact
+=method from_now_exact
 
 These methods do the opposite of the C<ago> methods.
 
@@ -128,9 +114,9 @@ These methods do the opposite of the C<ago> methods.
 sub from_now       { $_[0]->_flop(0, $ago_from_now); }
 sub from_now_exact { $_[0]->_flop(0, $ago_from_now); }
 
-=head2 later
+=method later
 
-=head2 later_exact
+=method later_exact
 
 These methods return "infinitely later" for positive durations and "infinitely
 earlier" for negative durations.
@@ -140,9 +126,9 @@ earlier" for negative durations.
 sub later       { $_[0]->_flop(0, $earlier_later); }
 sub later_exact { $_[0]->_flop(0, $earlier_later); }
 
-=head2 C<earlier>
+=method earlier
 
-=head2 C<earlier_exact>
+=method earlier_exact
 
 These methods do the opposite of the C<later> methods.
 
@@ -153,7 +139,7 @@ sub earlier_exact { $_[0]->_flop(1, $earlier_later); }
 
 package Time::Duration::_Result::_Infinite;
 
-=head2 concise
+=method concise
 
 This method can be called on the result of the above methods, trimming down the
 ouput.  For example:
@@ -176,24 +162,5 @@ sub as_string { ${ $_[0] } }
 use overload
 	'""' => 'as_string',
 	fallback => 1;
-
-=head1 AUTHOR
-
-Ricardo SIGNES, C<< <rjbs@cpan.org> >>
-
-=head1 BUGS
-
-Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.  I will be notified, and then you'll automatically be
-notified of progress on your bug as I make changes.
-
-=head1 COPYRIGHT
-
-Copyright 2007 Ricardo Signes, all rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-=cut
 
 1;

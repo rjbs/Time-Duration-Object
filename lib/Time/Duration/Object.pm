@@ -1,20 +1,9 @@
-package Time::Duration::Object;
-use Time::Duration;
-
-use warnings;
 use strict;
+use warnings;
+package Time::Duration::Object;
+# ABSTRACT: Time::Duration, but an object
 
-=head1 NAME
-
-Time::Duration::Object - Time::Duration, but an object
-
-=head1 VERSION
-
-version 0.300
-
-=cut
-
-our $VERSION = '0.300';
+use Time::Duration 1.02;
 
 =head1 SYNOPSIS
 
@@ -133,24 +122,6 @@ use overload
 Obviously, this module would be useless without Sean Burke's super-useful
 L<Time::Duration>.  There are those, I'm sure, who will think that even I<with>
 that module...
-
-=head1 AUTHOR
-
-Ricardo Signes, C<< <rjbs@cpan.org> >>
-
-=head1 BUGS
-
-Please report any bugs or feature requests to
-C<bug-time-duration-object@rt.cpan.org>, or through the web interface at
-L<http://rt.cpan.org>.  I will be notified, and then you'll automatically be
-notified of progress on your bug as I make changes.
-
-=head1 COPYRIGHT
-
-Copyright 2004-2006 Ricardo Signes, All Rights Reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
 
 =cut
 
